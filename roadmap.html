@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Roadmap — neurodiversified</title>
+  <meta name="description" content="Where neurodiversified is today, and the path from seed funding to a full resource hub for late-diagnosed autistic adults.">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('neurodiversified-theme');
+        if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        if (t === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="wordmark"><img src="assets/logo-web.png" alt="" width="40" height="20" style="vertical-align:-5px;margin-right:8px;">neurodiversi<span>fied</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+        <span class="visually-hidden">Menu</span>☰
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About the Dream</a>
+        <a href="roadmap.html" aria-current="page">The Roadmap</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="shop.html">Shop</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">☾</button>
+        <a href="#" data-donate-link class="btn btn-primary btn-small">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" style="padding-bottom: 1rem;">
+      <div class="container">
+        <span class="eyebrow">Transparency, by design</span>
+        <h1 style="max-width: 18ch;">Where we are, and where we're headed.</h1>
+        <p class="hero-sub">Here's exactly how we get from idea to a fully launched organization — no vague timelines, just the four real stops ahead of us.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="runway" data-reveal>
+          <div class="runway-line" aria-hidden="true"></div>
+          <ol class="runway-stops" style="list-style: none; padding: 0; margin: 0;">
+            <li class="stop is-complete">
+              <div class="stop-marker" aria-hidden="true">01</div>
+              <div class="stop-phase">Phase 1</div>
+              <h3>Vision</h3>
+              <p>Complete. The mission was defined: close the support gap for adults diagnosed later in life.</p>
+            </li>
+            <li class="stop is-current">
+              <span class="you-are-here">You are here</span>
+              <div class="stop-marker" aria-hidden="true">02</div>
+              <div class="stop-phase">Phase 2</div>
+              <h3>Building Our Foundation</h3>
+              <p>In progress. Raising the funds and doing the groundwork to file officially — including some hands-on fundraising, like our small keychain shop.</p>
+            </li>
+            <li class="stop">
+              <div class="stop-marker" aria-hidden="true">03</div>
+              <div class="stop-phase">Phase 3</div>
+              <h3>501(c)(3) Filing</h3>
+              <p>Up next. Official nonprofit status, unlocking the ability to accept tax-deductible donations and apply for grants.</p>
+            </li>
+            <li class="stop">
+              <div class="stop-marker" aria-hidden="true">04</div>
+              <div class="stop-phase">Phase 4</div>
+              <h3>Resource Hub Launch</h3>
+              <p>The destination. A full library of guides, community connections, and practical tools built specifically for late-diagnosed adults.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Help us move to phase 3</span>
+          <h2>Every contribution moves a phase closer.</h2>
+        </div>
+        <a href="get-involved.html#donate" class="btn btn-primary">Donate to Our Launch →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>neurodiversified</h4>
+          <p>Resources, advocacy, and practical guidance for late-diagnosed autistic adults.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="about.html">About the Dream</a>
+          <a href="roadmap.html">The Roadmap</a>
+          <a href="get-involved.html">Get Involved</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <div>
+          <h4>Stay in touch</h4>
+          <form data-newsletter-form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY">
+            <label for="footer-email" class="visually-hidden">Email address</label>
+            <div class="stack-form">
+              <input type="email" id="footer-email" name="email" placeholder="you@email.com" required>
+              <button type="submit" class="btn btn-secondary btn-small">Join waitlist</button>
+            </div>
+            <p class="form-note" data-form-status>Get updates as we launch.</p>
+          </form>
+          <a href="mailto:hello@neurodiversified.org" style="margin-top:0.9rem;">hello@neurodiversified.org</a>
+        </div>
+      </div>
+      <p class="legal-disclaimer">neurodiversified is currently in its founding, pre-501(c)(3) phase and has not yet been granted official nonprofit tax-exempt status. Contributions and purchases support our organizational launch costs but are not currently tax-deductible. This notice will be updated immediately upon receiving official nonprofit status.</p>
+      <p class="footer-bottom">© 2026 neurodiversified. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <div class="mobile-donate-bar">
+    <a href="#" data-donate-link class="btn btn-primary">Donate to Our Launch →</a>
+  </div>
+
+</body>
+</html>
