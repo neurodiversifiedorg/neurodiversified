@@ -13,7 +13,7 @@
      Set your real donation URL ONCE here (Stripe Payment Link, Zeffy, etc).
      Every button/link with data-donate-link on any page will pick it up
      automatically — you never have to hunt through the HTML files. */
-  var DONATE_URL = "https://REPLACE-WITH-YOUR-DONATE-URL";
+  var DONATE_URL = "https://buy.stripe.com/fZu00i9sz70idKQ4oMfUQ00";
 
   document.querySelectorAll("[data-donate-link]").forEach(function (el) {
     el.href = DONATE_URL;
@@ -22,7 +22,7 @@
   /* ---------------- Waitlist form (Web3Forms) ----------------
      Free, no backend needed. Get an access key at https://web3forms.com
      (just enter an email, no account setup) and paste it below. */
-  var WEB3FORMS_ACCESS_KEY = "REPLACE-WITH-YOUR-WEB3FORMS-ACCESS-KEY";
+  var WEB3FORMS_ACCESS_KEY = "f2b98cfc-85f4-405b-9b42-432e6f5d04f9";
 
   /* ---------------- Theme toggle ---------------- */
   var root = document.documentElement;
