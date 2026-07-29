@@ -4,20 +4,19 @@
    soft blur into sharp clarity on load, echoing the origin story's idea of
    suddenly seeing your own life through a lens you never had before.
    ========================================================================== */
-
 :root {
-  /* Color — dawn palette: the idea of a late sunrise, not an early one */
-  --color-bg: #faf7f2;
+  /* Color — Neurodiversified Teal Palette (Light Mode) */
+  --color-bg: #f8fafc;
   --color-bg-raised: #ffffff;
-  --color-text: #1b1f2a;
-  --color-text-soft: #4a4f5c;
-  --color-border: #e4dfd3;
-  --color-accent: #c98a2e;       /* dawn gold — primary CTA */
-  --color-accent-dark: #a86f20;
-  --color-accent-soft: #f4e6cd;
-  --color-blue: #3f5c78;         /* dusk blue — links, secondary */
-  --color-sage: #5f7d63;         /* progress / affirmative */
-  --color-sage-soft: #e3ead ;
+  --color-text: #0f172a;
+  --color-text-soft: #475569;
+  --color-border: #e2e8f0;
+  --color-accent: #0d9488;       /* Deep Teal — primary CTA */
+  --color-accent-dark: #0f766e;
+  --color-accent-soft: #ccfbf1;
+  --color-blue: #0369a1;         /* Deep slate-blue for links */
+  --color-sage: #14b8a6;         /* Progress / affirmative */
+  --color-sage-soft: #e0f2fe;
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Atkinson Hyperlegible", -apple-system, "Segoe UI", sans-serif;
@@ -26,23 +25,24 @@
   --radius: 14px;
   --radius-sm: 8px;
   --max-width: 1120px;
-  --shadow: 0 10px 30px -12px rgba(27, 31, 42, 0.18);
+  --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.15);
 
   color-scheme: light;
 }
 
 html[data-theme="dark"] {
-  --color-bg: #12172a;
-  --color-bg-raised: #1b2238;
-  --color-text: #f2efe9;
-  --color-text-soft: #c3c6d4;
-  --color-border: #303a56;
-  --color-accent: #e3ab55;
-  --color-accent-dark: #f0c07c;
-  --color-accent-soft: #33291a;
-  --color-blue: #9db6d1;
-  --color-sage: #93b998;
-  --color-sage-soft: #1c2b21;
+  /* Color — Neurodiversified Teal Palette (Dark Mode) */
+  --color-bg: #0f172a;           /* Deep Midnight Blue */
+  --color-bg-raised: #1e293b;    /* Soft Slate */
+  --color-text: #f8fafc;
+  --color-text-soft: #94a3b8;
+  --color-border: #334155;
+  --color-accent: #14b8a6;       /* Vibrant Teal */
+  --color-accent-dark: #2dd4bf;
+  --color-accent-soft: #042f2e;
+  --color-blue: #38bdf8;
+  --color-sage: #2dd4bf;
+  --color-sage-soft: #134e4a;
   color-scheme: dark;
 }
 
