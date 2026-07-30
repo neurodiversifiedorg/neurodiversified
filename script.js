@@ -211,11 +211,11 @@ async function loadResources() {
       loop: false,
       rewind: true,
       coverflowEffect: {
-        rotate: 28,
-        stretch: -20,
-        depth: 160,
+        rotate: 12,
+        stretch: 0,
+        depth: 100,
         modifier: 1,
-        slideShadows: true
+        slideShadows: false
       },
       navigation: {
         nextEl: ".swiper-button-next",
@@ -232,13 +232,24 @@ async function loadResources() {
   }
 }
 
-// Auto-start when vault markup is on the page
+// Auto-start when vault markup is on the page.
+// Uses DOMContentLoaded + window.load so it still runs if the script
+// evaluated before the Swiper CDN finished, or after a late paint.
 (function initResourceVault() {
-  if (!document.querySelector(".resource-swiper")) return;
-  function run() { loadResources(); }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
+  function go() {
+    if (!document.querySelector(".resource-swiper")) return;
+    if (document.querySelector(".resource-stack-track .swiper-slide")) return; // already built
+    loadResources();
   }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", go);
+  } else {
+    go();
+  }
+  // Safety net: if first pass raced Swiper CDN, try once more after full load
+  window.addEventListener("load", function () {
+    if (!document.querySelector(".resource-stack-track .swiper-slide")) {
+      go();
+    }
+  });
 })();

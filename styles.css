@@ -681,128 +681,120 @@ input[type="email"], input[type="text"] {
 
 .resource-swiper {
   width: 100%;
-  padding-top: 2.5rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
   position: relative;
+  overflow: hidden; /* kill internal scrollbars */
 }
 
-/* Individual coverflow cards — sized for a jukebox feel, not poster-huge */
+.resource-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+/* Individual cards */
 .resource-swiper .swiper-slide {
-  width: 260px;
-  height: 360px;
+  width: 280px;
+  height: auto;
+  min-height: 360px;
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  text-decoration: none !important;
-  color: var(--color-text);
   overflow: hidden;
   transition: border-color 0.2s ease;
-}
-
-.resource-swiper .swiper-slide,
-.resource-swiper .swiper-slide * {
+  /* Kill link chrome — the whole card is an <a> */
   text-decoration: none !important;
+  color: var(--color-text) !important;
+  border-bottom: 1px solid var(--color-border); /* override global a underline feel */
 }
 
-.resource-swiper .swiper-slide h3,
-.resource-swiper .swiper-slide p,
-.resource-swiper .swiper-slide li {
-  color: inherit;
-}
-
-.resource-swiper .swiper-slide p,
-.resource-swiper .swiper-slide li {
-  color: var(--color-text-soft);
-}
-
-.resource-swiper .swiper-slide .card-facets,
-.resource-swiper .swiper-slide .card-facets li {
-  color: var(--color-accent);
-}
-
-.resource-swiper .swiper-slide .card-link {
-  color: var(--color-accent);
-}
-
-.resource-swiper .swiper-slide:hover {
+.resource-swiper .swiper-slide:hover,
+.resource-swiper .swiper-slide:focus-visible {
   border-color: var(--color-accent);
+  text-decoration: none !important;
 }
 
 .resource-swiper .swiper-slide-active {
   border-color: var(--color-accent);
 }
 
+/* Nothing inside the card should look like a hyperlink */
+.resource-swiper .swiper-slide *,
+.resource-swiper .swiper-slide *:hover,
+.resource-swiper .swiper-slide *:visited {
+  text-decoration: none !important;
+}
+
+.resource-swiper .swiper-slide h3 {
+  color: var(--color-text) !important;
+  font-size: 1.1rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.25;
+}
+
+.resource-swiper .swiper-slide p {
+  color: var(--color-text-soft) !important;
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.resource-swiper .swiper-slide .card-facets {
+  margin: 0 0 0.75rem 1rem;
+  padding: 0;
+  color: var(--color-accent) !important;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  list-style: disc;
+}
+
+.resource-swiper .swiper-slide .card-facets li {
+  margin-bottom: 0.2rem;
+  color: var(--color-accent) !important;
+}
+
+.resource-swiper .swiper-slide .card-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-accent) !important;
+  font-family: var(--font-mono);
+  margin-top: auto;
+  display: inline-block;
+}
+
 /* Logo area */
 .card-image-wrapper {
   width: 100%;
-  height: 88px;
+  height: 96px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.25rem 0;
-  background: color-mix(in srgb, var(--color-accent-soft) 50%, transparent);
+  padding: 1rem 1.25rem 0.5rem;
+  background: color-mix(in srgb, var(--color-accent-soft) 45%, transparent);
 }
 
 .card-logo {
   max-width: 100%;
-  max-height: 64px;
+  max-height: 72px;
   object-fit: contain;
 }
 
-/* Text body */
 .card-content {
-  padding: 1.1rem 1.25rem 1.25rem;
+  padding: 1rem 1.25rem 1.25rem;
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
 
-.card-content h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.45rem;
-  color: var(--color-text);
-  line-height: 1.25;
-}
-
-.card-content p {
-  font-size: 0.88rem;
-  color: var(--color-text-soft);
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card-facets {
-  margin: 0 0 0.75rem 0.9rem;
-  padding: 0;
-  color: var(--color-accent);
-  font-size: 0.78rem;
-  font-family: var(--font-mono);
-  list-style: disc;
-}
-
-.card-facets li {
-  margin-bottom: 0.15rem;
-}
-
-.card-link {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  margin-top: auto;
-  display: inline-block;
-}
-
-/* Nav arrows — brand teal */
+/* Nav arrows */
 .resource-swiper .swiper-button-next,
 .resource-swiper .swiper-button-prev {
   color: var(--color-accent);
@@ -812,6 +804,8 @@ input[type="email"], input[type="text"] {
   border: 1px solid var(--color-border);
   border-radius: 50%;
   box-shadow: var(--shadow);
+  top: 50%;
+  margin-top: -22px;
 }
 
 .resource-swiper .swiper-button-next::after,
@@ -826,15 +820,17 @@ input[type="email"], input[type="text"] {
   background: var(--color-accent-soft);
 }
 
+/* Soften Swiper's built-in side shadows */
 .resource-swiper .swiper-slide-shadow-left,
 .resource-swiper .swiper-slide-shadow-right {
   border-radius: var(--radius);
+  background: linear-gradient(to left, rgba(0,0,0,0.25), transparent);
 }
 
 @media (max-width: 640px) {
   .resource-swiper .swiper-slide {
-    width: 240px;
-    height: 340px;
+    width: 250px;
+    min-height: 340px;
   }
   .resource-swiper .swiper-button-next,
   .resource-swiper .swiper-button-prev {
