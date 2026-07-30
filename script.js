@@ -131,38 +131,30 @@
   });
 })();
 
-// Function to load and build the resource cards with transparent PNGs
+// Function to load and build the resource cards with 3D Coverflow
 async function loadResources() {
   const track = document.querySelector('.carousel-track');
   
-  // If we aren't on the resources page, skip this script
   if (!track) return; 
 
   try {
-    // 1. Fetch the data from your JSON file
     const response = await fetch('resources.json');
     const resources = await response.json();
-
-    // 2. Clear out any placeholder HTML in the track
     track.innerHTML = '';
 
-    // 3. Loop through the JSON and build a card for each resource
     resources.forEach(resource => {
-      
-      // Check if there are bullet points, if so, build the list HTML
       let facetsHtml = '';
       if (resource.facets && resource.facets.length > 0) {
         const listItems = resource.facets.map(item => `<li>${item}</li>`).join('');
         facetsHtml = `<ul class="card-facets">${listItems}</ul>`;
       }
 
-      // Create the card element
       const card = document.createElement('a');
       card.href = resource.linkUrl;
-      card.className = 'resource-card dynamic-card';
-      card.target = '_blank'; // Opens link in a new tab
+      // CRITICAL: We added 'swiper-slide' here so the 3D engine recognizes it
+      card.className = 'swiper-slide dynamic-card';
+      card.target = '_blank'; 
       
-      // INSERT THE TEXT CONTENT AND THE NEW TRANSPARENT LOGO
       card.innerHTML = `
         <div class="card-image-wrapper">
           <img src="${resource.imageUrl}" alt="${resource.name} logo" class="card-logo">
@@ -175,15 +167,31 @@ async function loadResources() {
         </div>
       `;
 
-      // Add the finished card to the carousel track
       track.appendChild(card);
+    });
+
+    // NOW FIRE UP THE 3D OVERLAPPING ENGINE
+    const swiper = new Swiper('.resource-swiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 0, // Set to 0 so they stay flat horizontally
+        stretch: -50, // Pulls them closer together to overlap
+        depth: 250, // Pushes the side cards into the background
+        modifier: 1,
+        slideShadows: true, // Adds dynamic shadows to the cards behind
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      loop: true // Lets them spin endlessly
     });
 
   } catch (error) {
     console.error("Error loading resources:", error);
-    track.innerHTML = `<p style="color: white; text-align: center;">Resources are currently updating. Please check back shortly.</p>`;
+    track.innerHTML = `<p style="text-align: center;">Resources are currently updating. Please check back shortly.</p>`;
   }
 }
-
-// Run the function when the page loads
-document.addEventListener('DOMContentLoaded', loadResources);
