@@ -131,7 +131,7 @@
   });
 })();
 
-// Function to load and build the resource cards
+// Function to load and build the resource cards with transparent PNGs
 async function loadResources() {
   const track = document.querySelector('.carousel-track');
   
@@ -139,7 +139,7 @@ async function loadResources() {
   if (!track) return; 
 
   try {
-    // 1. Fetch the data from your new JSON file
+    // 1. Fetch the data from your JSON file
     const response = await fetch('resources.json');
     const resources = await response.json();
 
@@ -162,13 +162,11 @@ async function loadResources() {
       card.className = 'resource-card dynamic-card';
       card.target = '_blank'; // Opens link in a new tab
       
-      // Apply the image as a background
-      card.style.backgroundImage = `linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.95)), url('${resource.imageUrl}')`;
-      card.style.backgroundSize = 'cover';
-      card.style.backgroundPosition = 'center';
-
-      // Insert the text content
+      // INSERT THE TEXT CONTENT AND THE NEW TRANSPARENT LOGO
       card.innerHTML = `
+        <div class="card-image-wrapper">
+          <img src="${resource.imageUrl}" alt="${resource.name} logo" class="card-logo">
+        </div>
         <div class="card-content">
           <h3>${resource.name}</h3>
           <p>${resource.blurb}</p>
