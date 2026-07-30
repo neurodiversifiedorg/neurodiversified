@@ -133,7 +133,7 @@
 
 // Function to load and build the resource cards with 3D Coverflow
 async function loadResources() {
-  const track = document.querySelector('.carousel-track');
+  const track = document.querySelector('.resource-stack-track');
   
   if (!track) return; 
 
