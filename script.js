@@ -176,12 +176,12 @@ async function loadResources() {
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 0, // Set to 0 so they stay flat horizontally
-        stretch: -50, // Pulls them closer together to overlap
-        depth: 250, // Pushes the side cards into the background
+coverflowEffect: {
+        rotate: 40,    // CHANGED: This gives you the 3D angled tilt!
+        stretch: 0,    // CHANGED: Keeps them from overlapping too tightly
+        depth: 200,    // How far back the side cards are pushed
         modifier: 1,
-        slideShadows: true, // Adds dynamic shadows to the cards behind
+        slideShadows: true,
       },
       navigation: {
         nextEl: '.swiper-button-next',
