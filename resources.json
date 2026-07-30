@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sensory-toolkit",
+    "name": "Sensory Overload Toolkit",
+    "blurb": "Practical grounding techniques and environmental adjustments for acute burnout.",
+    "facets": [
+      "Light & Sound mitigation",
+      "Executive function aids"
+    ],
+    "imageUrl": "assets/sensory-bg.jpg",
+    "linkUrl": "https://example.com/toolkit"
+  },
+  {
+    "id": "shared-language",
+    "name": "Shared Language Dictionary",
+    "blurb": "Terms and definitions to help articulate your internal experiences.",
+    "facets": [],
+    "imageUrl": "assets/dictionary-bg.png",
+    "linkUrl": "https://example.com/dictionary"
+  }
+]
