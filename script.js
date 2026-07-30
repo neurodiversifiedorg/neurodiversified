@@ -135,9 +135,31 @@
    Resource Vault — 3D Coverflow carousel (Swiper)
    Loads cards from resources.json and spins them like a jukebox.
    ========================================================================== */
+var resourceSwiperInstance = null;
+
 async function loadResources() {
   const track = document.querySelector(".resource-stack-track");
-  if (!track) return;
+  const host = document.querySelector(".resource-swiper");
+  if (!track || !host) return;
+
+  // Wait briefly if Swiper CDN is still loading
+  if (typeof Swiper === "undefined") {
+    await new Promise(function (resolve) {
+      var tries = 0;
+      var t = setInterval(function () {
+        tries += 1;
+        if (typeof Swiper !== "undefined" || tries > 40) {
+          clearInterval(t);
+          resolve();
+        }
+      }, 50);
+    });
+  }
+  if (typeof Swiper === "undefined") {
+    track.innerHTML =
+      '<p style="text-align: center; width: 100%; padding: 2rem;">Carousel library failed to load. Please refresh.</p>';
+    return;
+  }
 
   try {
     const response = await fetch("resources.json");
@@ -174,13 +196,20 @@ async function loadResources() {
       track.appendChild(card);
     });
 
-    // Coverflow "jukebox" engine
-    new Swiper(".resource-swiper", {
+    // Tear down previous instance if re-running (e.g. from console)
+    if (resourceSwiperInstance && resourceSwiperInstance.destroy) {
+      resourceSwiperInstance.destroy(true, true);
+      resourceSwiperInstance = null;
+    }
+
+    // Coverflow "jukebox" — rewind instead of loop so 3 slides work cleanly
+    resourceSwiperInstance = new Swiper(".resource-swiper", {
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: "auto",
-      loop: true,
+      loop: false,
+      rewind: true,
       coverflowEffect: {
         rotate: 28,
         stretch: -20,
@@ -203,11 +232,13 @@ async function loadResources() {
   }
 }
 
-// Fire only when the vault markup is present
-if (document.querySelector(".resource-swiper")) {
+// Auto-start when vault markup is on the page
+(function initResourceVault() {
+  if (!document.querySelector(".resource-swiper")) return;
+  function run() { loadResources(); }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", loadResources);
+    document.addEventListener("DOMContentLoaded", run);
   } else {
-    loadResources();
+    run();
   }
-}
+})();

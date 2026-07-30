@@ -696,10 +696,35 @@ input[type="email"], input[type="text"] {
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--color-text);
   overflow: hidden;
   transition: border-color 0.2s ease;
+}
+
+.resource-swiper .swiper-slide,
+.resource-swiper .swiper-slide * {
+  text-decoration: none !important;
+}
+
+.resource-swiper .swiper-slide h3,
+.resource-swiper .swiper-slide p,
+.resource-swiper .swiper-slide li {
+  color: inherit;
+}
+
+.resource-swiper .swiper-slide p,
+.resource-swiper .swiper-slide li {
+  color: var(--color-text-soft);
+}
+
+.resource-swiper .swiper-slide .card-facets,
+.resource-swiper .swiper-slide .card-facets li {
+  color: var(--color-accent);
+}
+
+.resource-swiper .swiper-slide .card-link {
+  color: var(--color-accent);
 }
 
 .resource-swiper .swiper-slide:hover {
