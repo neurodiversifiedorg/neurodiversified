@@ -8,7 +8,7 @@
       "Independent living skills training",
       "Assistive technology and education support"
     ],
-    "imageUrl": "assets/dor-bg.jpg",
+    "imageUrl": "assets/dor-bg.png",
     "linkUrl": "https://www.dor.ca.gov/"
   },
   {
@@ -20,7 +20,7 @@
       "LifeMAP transition & life coaching",
       "Guides for workplace disclosure & self-advocacy"
     ],
-    "imageUrl": "assets/aane-bg.jpg",
+    "imageUrl": "assets/aane-bg.png",
     "linkUrl": "https://aane.org/autistic-adult/"
   },
   {
@@ -32,7 +32,7 @@
       "Self-Determination Program (SDP) info",
       "Statewide self-advocacy networks"
     ],
-    "imageUrl": "assets/dds-bg.jpg",
+    "imageUrl": "assets/dds-bg.png",
     "linkUrl": "https://www.dds.ca.gov/initiatives/autism/"
   }
 ]
