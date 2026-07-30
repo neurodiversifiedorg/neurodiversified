@@ -130,3 +130,62 @@
       });
   });
 })();
+
+// Function to load and build the resource cards
+async function loadResources() {
+  const track = document.querySelector('.carousel-track');
+  
+  // If we aren't on the resources page, skip this script
+  if (!track) return; 
+
+  try {
+    // 1. Fetch the data from your new JSON file
+    const response = await fetch('resources.json');
+    const resources = await response.json();
+
+    // 2. Clear out any placeholder HTML in the track
+    track.innerHTML = '';
+
+    // 3. Loop through the JSON and build a card for each resource
+    resources.forEach(resource => {
+      
+      // Check if there are bullet points, if so, build the list HTML
+      let facetsHtml = '';
+      if (resource.facets && resource.facets.length > 0) {
+        const listItems = resource.facets.map(item => `<li>${item}</li>`).join('');
+        facetsHtml = `<ul class="card-facets">${listItems}</ul>`;
+      }
+
+      // Create the card element
+      const card = document.createElement('a');
+      card.href = resource.linkUrl;
+      card.className = 'resource-card dynamic-card';
+      card.target = '_blank'; // Opens link in a new tab
+      
+      // Apply the image as a background
+      card.style.backgroundImage = `linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.95)), url('${resource.imageUrl}')`;
+      card.style.backgroundSize = 'cover';
+      card.style.backgroundPosition = 'center';
+
+      // Insert the text content
+      card.innerHTML = `
+        <div class="card-content">
+          <h3>${resource.name}</h3>
+          <p>${resource.blurb}</p>
+          ${facetsHtml}
+          <span class="card-link">Explore Resource &rarr;</span>
+        </div>
+      `;
+
+      // Add the finished card to the carousel track
+      track.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Error loading resources:", error);
+    track.innerHTML = `<p style="color: white; text-align: center;">Resources are currently updating. Please check back shortly.</p>`;
+  }
+}
+
+// Run the function when the page loads
+document.addEventListener('DOMContentLoaded', loadResources);
