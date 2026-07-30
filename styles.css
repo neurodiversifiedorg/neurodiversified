@@ -709,8 +709,8 @@ input[type="email"], input[type="text"] {
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 350px; /* Width of the posters */
-  height: 450px; /* Height of the posters */
+  width: 280px;  /* CHANGED: Shrunk from 350px */
+  height: 380px; /* CHANGED: Shrunk from 450px */
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
