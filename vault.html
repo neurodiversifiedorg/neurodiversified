@@ -20,7 +20,7 @@
         Menu
       </button>
 
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About the Dream</a>
         <a href="roadmap.html">The Roadmap</a>
@@ -29,7 +29,7 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle dark/light mode">🌓</button>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode">☾</button>
         <a href="#" data-donate-link class="btn btn-primary btn-small">Support the Launch</a>
       </div>
     </div>
@@ -47,10 +47,14 @@
       </div>
     </section>
 
-<section class="resource-hero">
+    <section class="resource-hero">
       <div class="container">
-        <div class="resource-stack-track">
-          <p style="text-align: center; width: 100%;">Loading resources...</p>
+        <div class="swiper resource-swiper">
+          <div class="swiper-wrapper resource-stack-track">
+            <p class="resource-loading" style="text-align: center; width: 100%; padding: 2rem;">Loading resources...</p>
+          </div>
+          <div class="swiper-button-prev" aria-label="Previous resource"></div>
+          <div class="swiper-button-next" aria-label="Next resource"></div>
         </div>
       </div>
     </section>
@@ -64,11 +68,11 @@
         <div class="footer-col">
           <h4>Join the Inner Circle</h4>
           <p class="form-note">Follow our journey from startup to official launch. No spam, just progress.</p>
-          <form action="https://api.web3forms.com/submit" method="POST" class="stack-form">
-            <input type="hidden" name="access_key" value="f2b98cfc-85f4-405b-9b42-432e6f5d04f9">
+          <form data-newsletter-form class="stack-form">
             <label for="footer-email" class="visually-hidden">Email Address</label>
             <input type="email" id="footer-email" name="email" placeholder="Your email address" required>
             <button type="submit" class="btn btn-secondary">Subscribe</button>
+            <p class="form-note" data-form-status></p>
           </form>
         </div>
 

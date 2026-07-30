@@ -131,67 +131,83 @@
   });
 })();
 
-// Function to load and build the resource cards with 3D Coverflow
+/* ==========================================================================
+   Resource Vault — 3D Coverflow carousel (Swiper)
+   Loads cards from resources.json and spins them like a jukebox.
+   ========================================================================== */
 async function loadResources() {
-  const track = document.querySelector('.resource-stack-track');
-  
-  if (!track) return; 
+  const track = document.querySelector(".resource-stack-track");
+  if (!track) return;
 
   try {
-    const response = await fetch('resources.json');
+    const response = await fetch("resources.json");
+    if (!response.ok) throw new Error("Failed to fetch resources.json");
     const resources = await response.json();
-    track.innerHTML = '';
+    track.innerHTML = "";
 
-    resources.forEach(resource => {
-      let facetsHtml = '';
+    resources.forEach(function (resource) {
+      let facetsHtml = "";
       if (resource.facets && resource.facets.length > 0) {
-        const listItems = resource.facets.map(item => `<li>${item}</li>`).join('');
-        facetsHtml = `<ul class="card-facets">${listItems}</ul>`;
+        const listItems = resource.facets.map(function (item) {
+          return "<li>" + item + "</li>";
+        }).join("");
+        facetsHtml = '<ul class="card-facets">' + listItems + "</ul>";
       }
 
-      const card = document.createElement('a');
-      card.href = resource.linkUrl;
-      // CRITICAL: We added 'swiper-slide' here so the 3D engine recognizes it
-      card.className = 'swiper-slide dynamic-card';
-      card.target = '_blank'; 
-      
-      card.innerHTML = `
-        <div class="card-image-wrapper">
-          <img src="${resource.imageUrl}" alt="${resource.name} logo" class="card-logo">
-        </div>
-        <div class="card-content">
-          <h3>${resource.name}</h3>
-          <p>${resource.blurb}</p>
-          ${facetsHtml}
-          <span class="card-link">Explore Resource &rarr;</span>
-        </div>
-      `;
+      const card = document.createElement("a");
+      card.href = resource.linkUrl || "#";
+      card.className = "swiper-slide dynamic-card";
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+
+      card.innerHTML =
+        '<div class="card-image-wrapper">' +
+          '<img src="' + (resource.imageUrl || "") + '" alt="' + (resource.name || "") + ' logo" class="card-logo" loading="lazy">' +
+        "</div>" +
+        '<div class="card-content">' +
+          "<h3>" + (resource.name || "") + "</h3>" +
+          "<p>" + (resource.blurb || "") + "</p>" +
+          facetsHtml +
+          '<span class="card-link">Explore Resource &rarr;</span>' +
+        "</div>";
 
       track.appendChild(card);
     });
 
-    // NOW FIRE UP THE 3D OVERLAPPING ENGINE
-    const swiper = new Swiper('.resource-swiper', {
-      effect: 'coverflow',
+    // Coverflow "jukebox" engine
+    new Swiper(".resource-swiper", {
+      effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
-      slidesPerView: 'auto',
-coverflowEffect: {
-        rotate: 40,    // CHANGED: This gives you the 3D angled tilt!
-        stretch: 0,    // CHANGED: Keeps them from overlapping too tightly
-        depth: 200,    // How far back the side cards are pushed
+      slidesPerView: "auto",
+      loop: true,
+      coverflowEffect: {
+        rotate: 28,
+        stretch: -20,
+        depth: 160,
         modifier: 1,
-        slideShadows: true,
+        slideShadows: true
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
       },
-      loop: true // Lets them spin endlessly
+      keyboard: {
+        enabled: true
+      }
     });
-
   } catch (error) {
     console.error("Error loading resources:", error);
-    track.innerHTML = `<p style="text-align: center;">Resources are currently updating. Please check back shortly.</p>`;
+    track.innerHTML =
+      '<p style="text-align: center; width: 100%; padding: 2rem;">Resources are currently updating. Please check back shortly.</p>';
+  }
+}
+
+// Fire only when the vault markup is present
+if (document.querySelector(".resource-swiper")) {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadResources);
+  } else {
+    loadResources();
   }
 }

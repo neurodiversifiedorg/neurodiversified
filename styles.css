@@ -668,158 +668,151 @@ input[type="email"], input[type="text"] {
   }
   .main-nav.is-open { display: flex; }
 }
-/* Update your existing resource-card class slightly */
-.resource-card.dynamic-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Pushes text to the bottom of the card */
-  padding: 2rem;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
 
-/* Style the optional bullet points */
-.card-facets {
-  margin: -1rem 0 1.5rem 1rem;
-  padding: 0;
-  color: var(--color-blue);
-  font-size: 0.9rem;
-  font-family: var(--font-mono);
-}
+/* ==========================================================================
+   Resource Vault — Coverflow / jukebox carousel
+   ========================================================================== */
 
-.card-facets li {
-  margin-bottom: 0.3rem;
-}
-
-/* Swiper Container */
 .resource-hero {
-  padding: 4rem 0;
-  background: var(--color-bg); 
+  padding: 3rem 0 4.5rem;
+  background: var(--color-bg);
   overflow: hidden;
 }
 
 .resource-swiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+  position: relative;
 }
 
-/* The Individual 3D Poster Cards */
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 280px;  /* CHANGED: Shrunk from 350px */
-  height: 380px; /* CHANGED: Shrunk from 450px */
+/* Individual coverflow cards — sized for a jukebox feel, not poster-huge */
+.resource-swiper .swiper-slide {
+  width: 260px;
+  height: 360px;
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* Make sure the text looks right inside the slide */
-.swiper-slide .card-content {
-  padding: 1.5rem;
-  color: var(--color-text);
-}
-
-/* Customizing the Swiper Arrows to match your brand */
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--color-accent); /* Makes arrows teal */
-}
-
-@media (max-width: 768px) {
-  .swiper-slide {
-    width: 280px;
-    height: 400px;
-  }
-}
-
-.resource-stack-track {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 2rem 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-accent) var(--color-bg-raised);
-}
-
-/* The Individual Poster Cards */
-.resource-card.dynamic-card {
-  flex: 0 0 320px;
-  height: 440px;
-  scroll-snap-align: center;
-  background: var(--color-bg-raised);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   text-decoration: none;
   color: var(--color-text);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
 }
 
-/* The Hover Effect - Slight Lift */
-.resource-card.dynamic-card:hover {
-  transform: translateY(-8px);
+.resource-swiper .swiper-slide:hover {
   border-color: var(--color-accent);
-  box-shadow: 0 20px 30px -10px color-mix(in srgb, var(--color-accent) 30%, transparent);
 }
 
-/* Logo Image Area */
+.resource-swiper .swiper-slide-active {
+  border-color: var(--color-accent);
+}
+
+/* Logo area */
 .card-image-wrapper {
   width: 100%;
-  height: 100px;
+  height: 88px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  padding: 1rem 1.25rem 0;
+  background: color-mix(in srgb, var(--color-accent-soft) 50%, transparent);
 }
 
 .card-logo {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 64px;
   object-fit: contain;
 }
 
-/* Text & Facets */
+/* Text body */
+.card-content {
+  padding: 1.1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
 .card-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.45rem;
   color: var(--color-text);
+  line-height: 1.25;
 }
 
 .card-content p {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--color-text-soft);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-facets {
-  margin: 0 0 1rem 1rem;
+  margin: 0 0 0.75rem 0.9rem;
   padding: 0;
   color: var(--color-accent);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-family: var(--font-mono);
+  list-style: disc;
 }
 
 .card-facets li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .card-link {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-accent);
   font-family: var(--font-mono);
   margin-top: auto;
+  display: inline-block;
+}
+
+/* Nav arrows — brand teal */
+.resource-swiper .swiper-button-next,
+.resource-swiper .swiper-button-prev {
+  color: var(--color-accent);
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+.resource-swiper .swiper-button-next::after,
+.resource-swiper .swiper-button-prev::after {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.resource-swiper .swiper-button-next:hover,
+.resource-swiper .swiper-button-prev:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.resource-swiper .swiper-slide-shadow-left,
+.resource-swiper .swiper-slide-shadow-right {
+  border-radius: var(--radius);
+}
+
+@media (max-width: 640px) {
+  .resource-swiper .swiper-slide {
+    width: 240px;
+    height: 340px;
+  }
+  .resource-swiper .swiper-button-next,
+  .resource-swiper .swiper-button-prev {
+    display: none;
+  }
 }
