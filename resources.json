@@ -35,4 +35,76 @@
     "imageUrl": "assets/dds-bg.png",
     "linkUrl": "https://www.dds.ca.gov/initiatives/autism/"
   }
+    {
+    "id": "ca-dor",
+    "name": "CA Department of Rehabilitation (DOR)",
+    "blurb": "The state agency that assists Californians with disabilities, including late-diagnosed autistic adults, in obtaining employment and maximizing independent living.",
+    "facets": [
+      "Vocational assessment and job coaching",
+      "Independent living skills training",
+      "Assistive technology and education support"
+    ],
+    "imageUrl": "assets/dor-bg.png",
+    "linkUrl": "https://www.dor.ca.gov/"
+  },
+  {
+    "id": "aane-support",
+    "name": "AANE (Assoc. for Autism and Neurodiversity)",
+    "blurb": "A massive hub offering online support, education, and resources specifically built for Autistic adults navigating life after a late diagnosis.",
+    "facets": [
+      "Free virtual support groups for adults",
+      "LifeMAP transition & life coaching",
+      "Guides for workplace disclosure & self-advocacy"
+    ],
+    "imageUrl": "assets/aane-bg.png",
+    "linkUrl": "https://aane.org/autistic-adult/"
+  },
+  {
+    "id": "ca-dds-hub",
+    "name": "California DDS Autism Resource Hub",
+    "blurb": "The state's official directory connecting autistic individuals to local Regional Centers, mental health services, and community support networks.",
+    "facets": [
+      "Links to Regional Center adult services",
+      "Self-Determination Program (SDP) info",
+      "Statewide self-advocacy networks"
+    ],
+    "imageUrl": "assets/dds-bg.png",
+    "linkUrl": "https://www.dds.ca.gov/initiatives/autism/"
+  }
+    {
+    "id": "ca-dor",
+    "name": "CA Department of Rehabilitation (DOR)",
+    "blurb": "The state agency that assists Californians with disabilities, including late-diagnosed autistic adults, in obtaining employment and maximizing independent living.",
+    "facets": [
+      "Vocational assessment and job coaching",
+      "Independent living skills training",
+      "Assistive technology and education support"
+    ],
+    "imageUrl": "assets/dor-bg.png",
+    "linkUrl": "https://www.dor.ca.gov/"
+  },
+  {
+    "id": "aane-support",
+    "name": "AANE (Assoc. for Autism and Neurodiversity)",
+    "blurb": "A massive hub offering online support, education, and resources specifically built for Autistic adults navigating life after a late diagnosis.",
+    "facets": [
+      "Free virtual support groups for adults",
+      "LifeMAP transition & life coaching",
+      "Guides for workplace disclosure & self-advocacy"
+    ],
+    "imageUrl": "assets/aane-bg.png",
+    "linkUrl": "https://aane.org/autistic-adult/"
+  },
+  {
+    "id": "ca-dds-hub",
+    "name": "California DDS Autism Resource Hub",
+    "blurb": "The state's official directory connecting autistic individuals to local Regional Centers, mental health services, and community support networks.",
+    "facets": [
+      "Links to Regional Center adult services",
+      "Self-Determination Program (SDP) info",
+      "Statewide self-advocacy networks"
+    ],
+    "imageUrl": "assets/dds-bg.png",
+    "linkUrl": "https://www.dds.ca.gov/initiatives/autism/"
+  }
 ]
