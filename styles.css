@@ -691,3 +691,50 @@ input[type="email"], input[type="text"] {
 .card-facets li {
   margin-bottom: 0.3rem;
 }
+
+/* Swiper Container */
+.resource-hero {
+  padding: 4rem 0;
+  background: var(--color-bg); 
+  overflow: hidden;
+}
+
+.resource-swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* The Individual 3D Poster Cards */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 350px; /* Width of the posters */
+  height: 450px; /* Height of the posters */
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Make sure the text looks right inside the slide */
+.swiper-slide .card-content {
+  padding: 1.5rem;
+  color: var(--color-text);
+}
+
+/* Customizing the Swiper Arrows to match your brand */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-accent); /* Makes arrows teal */
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 280px;
+    height: 400px;
+  }
+}
