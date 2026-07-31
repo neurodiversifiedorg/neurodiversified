@@ -31,4 +31,10 @@
     <priority>0.80</priority>
   </url>
 
+    <!-- Resource Page -->
+  <url>
+    <loc>https://neurodiversified.org/vault.html</loc>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
